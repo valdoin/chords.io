@@ -1,25 +1,29 @@
 <template>
-  <div class="chord">
-    <h2>{{ rootNote }} Chord</h2>
+  <div class="chord card">
+    <h2>{{ rootNote }}</h2>
 
-    <label for="chordType">Chord Type:</label>
+    <label for="chordType">chord type:</label>
     <select v-model="localChordType" id="chordType" @change="updateChordNotes" class="dropdown">
-      <option value="major">Major</option>
-      <option value="minor">Minor</option>
-      <option value="major7">Major 7</option>
-      <option value="minor7">Minor 7</option>
-      <option value="major9">Major 9</option>
-      <option value="minor9">Minor 9</option>
+      <option value="major">major</option>
+      <option value="minor">minor</option>
+      <option value="major7">major 7</option>
+      <option value="minor7">minor 7</option>
+      <option value="major9">major 9</option>
+      <option value="minor9">minor 9</option>
     </select>
 
-    <label for="inversion">Inversion:</label>
+    <label for="inversion">inversion:</label>
     <select v-model="inversion" id="inversion" class="dropdown">
       <option v-for="(inv, index) in chordNotes" :value="index" :key="index">
-        {{ index === 0 ? 'Root Position' : `${index}th Inversion` }}
+        {{ index === 0 ? 'root position' : `${index}th inversion` }}
       </option>
     </select>
 
-    <button @click="playChord" class="play-button">Play Chord</button>
+    <button @click="playChord" class="play-button">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 5v14l11-7L8 5z" fill="#FFFFFF"/>
+      </svg>
+    </button>
   </div>
 </template>
 
@@ -81,55 +85,63 @@ export default {
 </script>
 
 <style scoped>
+
 .chord {
   text-align: center;
-  background-color: #ffffff;
+  background-color: #222222;
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   padding: 20px;
   margin: 10px;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.chord:hover {
-  transform: scale(1.05);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 h2 {
-  color: #333;
+  color: #FFFFFF;
   margin-bottom: 15px;
 }
 
 label {
   display: block;
   margin: 10px 0 5px;
-  color: #555;
+  color: #CCCCCC;
 }
 
 .dropdown {
   border-radius: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid #555555;
   padding: 10px;
-  background-color: #fafafa;
+  background-color: #333333;
+  color: #FFFFFF;
   margin-bottom: 10px;
   width: 100%;
   max-width: 250px;
   box-sizing: border-box;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.dropdown:active, .dropdown:focus{
+  background-color: #246A73;
 }
 
 .play-button {
-  background-color: #4CAF50;
-  color: white;
+  background-color: #246A73;
+  color: #FFFFFF;
   border: none;
   border-radius: 8px;
-  padding: 12px 18px;
+  padding: 10px 15px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 24px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .play-button:hover {
-  background-color: #45a049;
+  background-color: #1E5A65;
 }
 </style>

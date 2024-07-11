@@ -4,24 +4,45 @@
 
     <label for="chordType">chord type:</label>
     <select v-model="localChordType" id="chordType" @change="updateChordNotes" class="dropdown">
-      <option value="major">major</option>
-      <option value="minor">minor</option>
-      <option value="major7">major 7</option>
-      <option value="minor7">minor 7</option>
-      <option value="major9">major 9</option>
-      <option value="minor9">minor 9</option>
+      <optgroup label="major">
+        <option value="major">major</option>
+        <option value="major7">major 7</option>
+        <option value="major9">major 9</option>
+        <option value="major11">major 11</option>
+        <option value="majorAdd9">major add9</option>
+      </optgroup>
+      <optgroup label="minor">
+        <option value="minor">minor</option>
+        <option value="minor7">minor 7</option>
+        <option value="minor9">minor 9</option>
+        <option value="minor11">minor 11</option>
+        <option value="minorAdd9">minor add9</option>
+      </optgroup>
+      <optgroup label="dominant">
+        <option value="dom7">dom 7</option>
+        <option value="dom9">dom 9</option>
+        <option value="dom11">dom 11</option>
+      </optgroup>
+      <optgroup label="augmented">
+        <option value="aug">aug</option>
+        <option value="aug7">aug 7</option>
+      </optgroup>
+      <optgroup label="diminished">
+        <option value="dim">dim</option>
+        <option value="dim7">dim 7</option>
+      </optgroup>
     </select>
 
     <label for="inversion">inversion:</label>
     <select v-model="inversion" id="inversion" class="dropdown">
       <option v-for="(inv, index) in chordNotes" :value="index" :key="index">
-        {{ index === 0 ? 'root position' : `${index}th inversion` }}
+        {{ index === 0 ? 'Root Position' : `${index}th inversion` }}
       </option>
     </select>
 
     <button @click="playChord" class="play-button">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 5v14l11-7L8 5z" fill="#FFFFFF"/>
+        <path d="M8 5v14l11-7L8 5z" fill="#FFFFFF" />
       </svg>
     </button>
   </div>
@@ -85,7 +106,6 @@ export default {
 </script>
 
 <style scoped>
-
 .chord {
   text-align: center;
   background-color: #222222;
@@ -123,7 +143,8 @@ label {
   font-family: 'JetBrains Mono', monospace;
 }
 
-.dropdown:active, .dropdown:focus{
+.dropdown:active,
+.dropdown:focus {
   background-color: #246A73;
 }
 
@@ -145,3 +166,4 @@ label {
   background-color: #1E5A65;
 }
 </style>
+

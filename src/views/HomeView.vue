@@ -2,22 +2,38 @@
   <div class="home">
     <label for="chordType">change all chord types:</label>
     <select v-model="activeChordType" id="chordType" class="dropdown">
-      <option value="major">major</option>
-      <option value="minor">minor</option>
-      <option value="major7">major 7</option>
-      <option value="minor7">minor 7</option>
-      <option value="major9">major 9</option>
-      <option value="minor9">minor 9</option>
+      <optgroup label="major">
+        <option value="major">major</option>
+        <option value="major7">major 7</option>
+        <option value="major9">major 9</option>
+        <option value="major11">major 11</option>
+        <option value="majorAdd9">major add9</option>
+      </optgroup>
+      <optgroup label="minor">
+        <option value="minor">minor</option>
+        <option value="minor7">minor 7</option>
+        <option value="minor9">minor 9</option>
+        <option value="minor11">minor 11</option>
+        <option value="minorAdd9">minor add9</option>
+      </optgroup>
+      <optgroup label="dominant">
+        <option value="dom7">dom 7</option>
+        <option value="dom9">dom 9</option>
+        <option value="dom11">dom 11</option>
+      </optgroup>
+      <optgroup label="augmented">
+        <option value="aug">aug</option>
+        <option value="aug7">aug 7</option>
+      </optgroup>
+      <optgroup label="diminished">
+        <option value="dim">dim</option>
+        <option value="dim7">dim 7</option>
+      </optgroup>
     </select>
 
     <div class="chord-container">
-      <ChordComponent
-        v-for="(chord, note) in chordData"
-        :key="note"
-        :rootNote="note"
-        :chordData="chordData"
-        :chordType="activeChordType"
-      />
+      <ChordComponent v-for="(chord, note) in chordData" :key="note" :rootNote="note" :chordData="chordData"
+        :chordType="activeChordType" />
     </div>
   </div>
 </template>

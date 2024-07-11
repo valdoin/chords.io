@@ -27,7 +27,7 @@ export default {
 h1 {
   color: #FFFFFF;
   margin-top: 1em; 
-  margin-bottom: 0.5em; 
+  margin-bottom: 0.1em; 
   display: flex;
   align-items: center;
 }
